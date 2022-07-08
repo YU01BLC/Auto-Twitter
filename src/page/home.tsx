@@ -1,15 +1,21 @@
 import { SafeAreaView, StyleSheet, View, Text, ScrollView } from 'react-native'
+import { useRecoilValue } from 'recoil'
+import TlButton from '../component/changeTL'
+import { userChangeFlgState } from '../state/atoms/userChangeAtom'
 
 /** homeコンポーネント */
 export default function Home() {
+  const userChangeFlg = useRecoilValue(userChangeFlgState)
+
   return (
     <SafeAreaView>
-      <View style={styles.container}>
+      <View style={[!userChangeFlg ? styles.container : styles.afterContainer]}>
         <View style={styles.profArea}>
           <Text>プロフィール表示エリア</Text>
         </View>
         <View style={styles.modalArea}>
-          <Text>Modalボタン表示エリア</Text>
+          <TlButton />
+          <Text>ツイートModal表示エリア</Text>
         </View>
         <ScrollView style={styles.scrollView}>
           <Text style={styles.text}>
@@ -35,6 +41,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  afterContainer: {
+    opacity: 0.3,
+  },
   profArea: {
     borderWidth: 2,
     alignItems: 'center',
@@ -45,6 +54,8 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     paddingTop: 20,
     borderWidth: 2,
+    flexDirection: 'row',
+    paddingHorizontal: 20,
   },
   tlArea: {
     marginHorizontal: 20,
