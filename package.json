@@ -1,5 +1,5 @@
 {
-  "name": "stock-state",
+  "name": "Auto Twitter",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -19,12 +19,15 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
-    "react-native-web": "0.17.7"
+    "react-native-media-query": "^1.0.11",
+    "react-native-web": "0.17.7",
+    "recoil": "^0.7.4",
+    "twitter-api-v2": "^1.12.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@types/jest": "^28.1.1",
-    "@types/react": "^18.0.12",
+    "@types/react": "~17.0.21",
     "@types/react-native": "^0.67.8",
     "@types/react-test-renderer": "^18.0.0",
     "eslint": "^8.17.0",
