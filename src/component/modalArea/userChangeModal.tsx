@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRecoilState } from 'recoil'
-import { userChangeFlgState } from '../state/atoms/userChangeAtom'
+import { userChangeFlgState } from '../../state/atoms/userChangeAtom'
 import { Modal, Text, Pressable, View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
 
-export default function UserChange() {
+export default function UserChangeModal() {
   const [userChangeFlg, setUserChangeFlg] = useRecoilState(userChangeFlgState)
   return (
     <View style={styles.centeredView}>

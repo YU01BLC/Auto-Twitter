@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSetRecoilState } from 'recoil'
 import { StyleSheet, View, Text, SafeAreaView } from 'react-native'
-import UserChange from './userChangeModal'
-import { userChangeFlgState } from '../state/atoms/userChangeAtom'
+import UserChangeModal from './userChangeModal'
+import { userChangeFlgState } from '../../state/atoms/userChangeAtom'
 
 /** 対象ユーザのprof/TLを切り替えるコンポーネント */
 export default function TlButton() {
@@ -12,7 +12,7 @@ export default function TlButton() {
       <View style={styles.buttonStyle}>
         <Text onPress={() => setUserChangeFlg(true)}>changeTL</Text>
       </View>
-      <UserChange />
+      <UserChangeModal />
     </SafeAreaView>
   )
 }
