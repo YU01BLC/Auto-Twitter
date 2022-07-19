@@ -11,17 +11,20 @@ export default function UserChangeModal() {
       <Modal animationType="slide" transparent={true} visible={userChangeFlg}>
         <View style={styles.centeredView}>
           <View style={styles.modalView} dataSet={{ media: ids.modalView }}>
+            <View style={styles.ButtonArea}>
+              <Pressable
+                style={styles.closeButtonArea}
+                onPress={() => {
+                  setUserChangeFlg(false)
+                }}
+              >
+                <Text style={styles.closeButton}>×</Text>
+              </Pressable>
+            </View>
+
             <Text style={styles.modalText}>
               ここに表示したいUserの名前を一覧表示する。
             </Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => {
-                setUserChangeFlg(false)
-              }}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
           </View>
         </View>
       </Modal>
@@ -40,8 +43,8 @@ const { ids, styles } = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 2,
     borderRadius: 20,
-    paddingVertical: 100,
-    paddingHorizontal: 100,
+    width: 300,
+    height: 100,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -52,24 +55,27 @@ const { ids, styles } = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     '@media (min-width: 428px)': {
-      backgroundColor: 'red',
+      width: 400,
+      height: 150,
     },
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+  ButtonArea: {
+    flexDirection: 'row',
+    marginTop: 5,
+    marginBottom: 32,
+    position: 'relative',
   },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
+  closeButtonArea: {
+    position: 'absolute',
+    right: 120,
+    '@media (min-width: 428px)': {
+      right: 170,
+    },
   },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
+  closeButton: {
+    color: 'black',
     fontWeight: 'bold',
-    textAlign: 'center',
+    fontSize: 24,
   },
   modalText: {
     marginBottom: 15,

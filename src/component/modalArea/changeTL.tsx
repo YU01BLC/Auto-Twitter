@@ -20,10 +20,6 @@ export default function TlButton() {
 const styles = StyleSheet.create({
   buttonStyle: {
     alignSelf: 'center',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    borderTopColor: 'black',
-    borderTopWidth: 1,
     paddingHorizontal: 20,
     paddingVertical: 8,
   },
