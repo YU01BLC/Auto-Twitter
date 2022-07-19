@@ -1,8 +1,9 @@
 import React from 'react'
 import { useRecoilState } from 'recoil'
-import { tweetFlgState } from '../../state/atoms/tweetAtom'
 import { Modal, Text, Pressable, View, TextInput } from 'react-native'
 import StyleSheet from 'react-native-media-query'
+import ImageInput from '../molecules/imageInput'
+import { tweetFlgState } from '../../state/atoms/tweetAtom'
 
 export default function TweetModal() {
   const [tweetFlg, setTweetFlg] = useRecoilState(tweetFlgState)
@@ -36,7 +37,9 @@ export default function TweetModal() {
               placeholderTextColor={'darkgray'}
               enablesReturnKeyAutomatically
             />
-            <Text>画像表示箇所</Text>
+            <View style={styles.imageArea}>
+              <ImageInput />
+            </View>
           </View>
         </View>
       </Modal>
@@ -55,7 +58,6 @@ const { ids, styles } = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 2,
     borderRadius: 20,
-    alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -74,17 +76,11 @@ const { ids, styles } = StyleSheet.create({
   },
   closeButtonArea: {
     position: 'absolute',
-    right: 130,
-    '@media (min-width: 428px)': {
-      right: 180,
-    },
+    left: 20,
   },
   sendButtonArea: {
     position: 'absolute',
-    left: 100,
-    '@media (min-width: 428px)': {
-      left: 150,
-    },
+    right: 20,
   },
   closeButton: {
     color: 'black',
@@ -108,5 +104,8 @@ const { ids, styles } = StyleSheet.create({
       width: 400,
       height: 150,
     },
+  },
+  imageArea: {
+    marginLeft: 20,
   },
 })
