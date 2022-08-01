@@ -1,15 +1,30 @@
 import { SafeAreaView, StyleSheet, View, Text, ScrollView } from 'react-native'
+import { useRecoilValue } from 'recoil'
+import TlButton from '../component/modalArea/changeTL'
+import TweetButton from '../component/modalArea/tweet'
+import { userChangeFlgState } from '../state/atoms/userChangeAtom'
+import { tweetFlgState } from '../state/atoms/tweetAtom'
 
 /** homeコンポーネント */
 export default function Home() {
+  const userChangeFlg = useRecoilValue(userChangeFlgState)
+  const tweetFlg = useRecoilValue(tweetFlgState)
+
   return (
     <SafeAreaView>
-      <View style={styles.container}>
+      <View
+        style={[
+          !userChangeFlg && !tweetFlg
+            ? styles.container
+            : styles.afterContainer,
+        ]}
+      >
         <View style={styles.profArea}>
           <Text>プロフィール表示エリア</Text>
         </View>
         <View style={styles.modalArea}>
-          <Text>Modalボタン表示エリア</Text>
+          <TlButton />
+          <TweetButton />
         </View>
         <ScrollView style={styles.scrollView}>
           <Text style={styles.text}>
@@ -35,6 +50,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  afterContainer: {
+    opacity: 0.3,
+  },
   profArea: {
     borderWidth: 2,
     alignItems: 'center',
@@ -42,9 +60,13 @@ const styles = StyleSheet.create({
   },
   modalArea: {
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginVertical: 20,
     paddingTop: 20,
-    borderWidth: 2,
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
   },
   tlArea: {
     marginHorizontal: 20,
